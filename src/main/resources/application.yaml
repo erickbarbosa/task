@@ -20,5 +20,8 @@ spring:
     driveClassName:  org.h2.Driver
     username: root 
     password: root 
+  devstools:
+    restart:
+      enabled: true
   jpa:
     database-platform:  
