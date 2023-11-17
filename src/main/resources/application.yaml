@@ -4,11 +4,6 @@ server:
   servlet:
     context-path: /api 
 
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://localhost:8761/eureka/
-
 ## Datasource
 
 spring:
@@ -20,8 +15,5 @@ spring:
     driveClassName:  org.h2.Driver
     username: root 
     password: root 
-  devstools:
-    restart:
-      enabled: true
   jpa:
     database-platform:  
