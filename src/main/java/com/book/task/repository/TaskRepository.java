@@ -19,7 +19,7 @@ import com.book.task.entity.Task;
 @RepositoryRestResource(path = "task", collectionResourceRel="tasks")
 public interface TaskRepository extends JpaRepository<Task, Integer>, JpaSpecificationExecutor<Task>, QuerydslPredicateExecutor<Task>{
 
-	Page<Task> findByIn(@Param(value = "id") List<Integer> eventId, Pageable pageable);
+	Page<Task> findByIdIn(@Param(value = "id") List<Integer> eventId, Pageable pageable);
 	
 	Page<Task> findByNameIn(@Param(value = "name") Collection<String> names, Pageable pageable);
 	
@@ -30,4 +30,5 @@ public interface TaskRepository extends JpaRepository<Task, Integer>, JpaSpecifi
 	@Query(name = "Task.findById", nativeQuery = true)
 	@RestResource(exported = false)
 	Optional<Task> findById(@Param(value = "id") long id);
+	
 }
