@@ -14,7 +14,9 @@ import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.server.ResponseStatusException;
@@ -37,7 +39,7 @@ public class TaskController {
 	private TaskService service;
 	
 	
-	@RequestMapping(path = TaskUri.TASKS)
+	@GetMapping(path = TaskUri.TASKS)
 	public ResponseEntity<?> getTasks(TaskDto taskDto, Pageable pageable, PersistentEntityResourceAssembler resourceAssembler) {
 		log.info("TaskController: " + taskDto);
 		Page<Task> events = service.getTasks(pageable);
@@ -45,7 +47,7 @@ public class TaskController {
 		return ResponseEntity.ok(resource);
 	}
 	
-	@RequestMapping(path = TaskUri.TASK)
+	@GetMapping(path = TaskUri.TASK)
 	public ResponseEntity<?> getTask(@PathVariable("id") int taskId, Pageable pageable, PersistentEntityResourceAssembler resourceAssembler) {
 		try {
 			log.info("TaskController::: " + taskId);
@@ -60,7 +62,7 @@ public class TaskController {
 		}
 	}
 	
-	@RequestMapping(path = TaskUri.CREATE_TASK)
+	@PostMapping(path = TaskUri.CREATE_TASK)
 	public ResponseEntity<?> createTask(@RequestBody TaskDto taskDto, Pageable pageable, PersistentEntityResourceAssembler resourceAssembler) {
 		log.info("TaskController:"+taskDto);
 		Task events = service.saveTask(taskDto);
