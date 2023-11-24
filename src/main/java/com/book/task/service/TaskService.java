@@ -3,6 +3,8 @@ package com.book.task.service;
 import java.util.Optional;
 
 import org.modelmapper.ModelMapper;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.book.task.dto.TaskDto;
@@ -19,6 +21,10 @@ public class TaskService {
 	
 	public TaskService(TaskRepository repository) {
 		this.repository = repository;
+	}
+	
+	public Page<Task> getTasks(Pageable pageable) {
+		return repository.findAll(pageable);
 	}
 	
 	public Task get(long taskId) {
