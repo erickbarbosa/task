@@ -2,7 +2,12 @@
 
 server:
   servlet:
-    context-path: /api 
+    context-path: /api
+  ssl: 
+    key-store: classpath:keystore.jks
+    key-store-password: dHNrLW1nbXQtc3lz
+    key-alias: tsk-mgmt-sys
+    key-password: dHNrLW1nbXQtc3lz
 
 ## Datasource
 
